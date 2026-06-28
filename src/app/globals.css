@@ -1,26 +1,239 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* ─── Font stack ─────────────────────────────────────────────── */
+  --font-sans: var(--font-Alexandria), ui-sans-serif, system-ui, sans-serif;
+  --font-inter: var(--font-inter), sans-serif;
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-Alexandria), ui-sans-serif, system-ui, sans-serif;
+
+  /* ─── Radii (shadcn token passthrough) ──────────────────────── */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ─── shadcn semantic color passthroughs ────────────────────── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ─── Awtad brand palette ────────────────────────────────────── */
+  --color-gold: #f7c32a;
+  --color-gold-hover: #f4a805;
+  --color-purple: #724194;
+  --color-purple-dark: #29093f;
+  --color-dark: #20201e;
+  --color-muted-gray: #afafaf;
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #d9d9d9;
+  --color-accent-gold: #d8af6f;
+  --color-accent-gold-dark: #caa15f;
+  /* Page heading color  */
+  --color-heading: #153b37;
+
+  /* Brand prefixed tokens for strict config compliance */
+  --color-brand-primary: #f7c32a;
+  --color-brand-primary-hover: #f4a805;
+  --color-brand-secondary: #724194;
+  --color-brand-secondary-dark: #29093f;
+  --color-brand-neutral-dark: #20201e;
+  --color-brand-muted: #afafaf;
+  --color-brand-bg-light: #f9f9f9;
+  --color-brand-accent-gold: #d8af6f;
+  --color-brand-accent-gold-dark: #caa15f;
+  --color-brand-heading: #153b37;
+
+  /* ─── Hero section tokens  ──────────────────────── */
+  --height-hero: 656px;
+  --min-height-hero-mobile: 400px;
+  --radius-hero: 20px;
+
+  /* ─── Section heading typography token ───────────────────────── */
+  --font-size-section-heading: 48px;
+  --line-height-section-heading: 1.23;
+
+  /* ─── Hero title typography token ────────────────────────────── */
+  --font-size-hero-title: 56px;
+
+  /* ─── CTA "Show More" button tokens ──────────────────────────── */
+  --height-btn-cta: 54px;
+  --width-btn-cta: 224px;
+  --font-size-btn-cta: 18px;
+
+  /* ─── Carousel dot tokens ─────────────────────────────────────── */
+  --size-dot-active: 9px;
+  --size-dot-track-w: 99px;
+
+  /* ─── Hero gradient overlay (Figma 33% black scrim) ─────────── */
+  --hero-overlay: rgba(0, 0, 0, 0.33);
+
+  /* ─── Footer layout tokens (Figma specifications) ───────────── */
+  --height-footer-cta: 72px;
+  --width-footer-cta: 288px;
+  --height-footer-logo: 137px;
+  --width-footer-logo: 604px;
+  --width-footer-col3: 376px;
+  --footer-overlay: rgba(41, 9, 63, 0.7);
+
+  /* ─── Navbar layout tokens & drop shadow filters ────────────── */
+  --height-login-btn: 52px;
+  --width-login-btn: 176px;
+  --gap-navbar: 38px;
+  --shadow-login-btn: drop-shadow(0px 25px 10px rgba(0, 0, 0, 0.01))
+    drop-shadow(0px 14px 9px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  --shadow-login-btn-mobile: drop-shadow(0px 14px 9px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.09))
+    drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+
+  /* ─── Search bar layout tokens (Figma specifications) ────────── */
+  --height-searchbar: 52px;
+  --width-searchbar: 1168px;
+  --radius-searchbar: 17px;
+
+  /* ─── Encyclopedia card layout tokens & shadow ───────────────── */
+  --height-encyclopedia-card: 370.32px;
+  --width-encyclopedia-card: 278.48px;
+  --height-encyclopedia-card-cover: 270.39px;
+  --shadow-encyclopedia-card: 0px 129.32px 51.43px rgba(0, 0, 0, 0.01),
+    0px 72.74px 43.35px rgba(0, 0, 0, 0.05),
+    0px 32.33px 32.33px rgba(0, 0, 0, 0.09),
+    0px 8.08px 17.63px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* Primary → Gold #F7C32A */
+  --primary: oklch(0.834 0.172 87.26);
+  --primary-foreground: oklch(0.145 0 0);
+
+  /* Secondary → Purple #724194 */
+  --secondary: oklch(0.421 0.145 303.72);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+
+  /* Accent → Accent Gold #D8AF6F */
+  --accent: oklch(0.759 0.102 76.52);
+  --accent-foreground: oklch(0.145 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.834 0.172 87.26);
+
+  --chart-1: oklch(0.834 0.172 87.26);
+  --chart-2: oklch(0.421 0.145 303.72);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.834 0.172 87.26);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.834 0.172 87.26);
+}
+
+.dark {
+  /* Dark background → #20201E */
+  --background: oklch(0.145 0.004 60);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.185 0.004 60);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.185 0.004 60);
+  --popover-foreground: oklch(0.985 0 0);
+
+  /* Primary stays Gold in dark mode */
+  --primary: oklch(0.834 0.172 87.26);
+  --primary-foreground: oklch(0.145 0 0);
+
+  /* Secondary → Purple dark #29093F */
+  --secondary: oklch(0.21 0.11 303.72);
+  --secondary-foreground: oklch(0.985 0 0);
+
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.759 0.102 76.52);
+  --accent-foreground: oklch(0.145 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.834 0.172 87.26);
+
+  --chart-1: oklch(0.834 0.172 87.26);
+  --chart-2: oklch(0.421 0.145 303.72);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  --sidebar: oklch(0.185 0.004 60);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.834 0.172 87.26);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.834 0.172 87.26);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
