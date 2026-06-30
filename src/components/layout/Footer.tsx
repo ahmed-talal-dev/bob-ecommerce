@@ -93,7 +93,7 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 pb-16 pt-24 sm:px-12 lg:px-20">
         {/* ── Calligraphy Logo Image (Figma Screenshot 1 / title-footer.png) ── */}
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center py-10 px-4">
           <Image
             src="/assets/title-footer.png"
             alt="ثقتكم نبراس طريقنا"
@@ -103,7 +103,7 @@ export default function Footer() {
               height: "var(--height-footer-logo)",
               maxWidth: "var(--width-footer-logo)",
             }}
-            className="w-auto select-none object-contain"
+            className="h-auto w-full select-none object-contain"
             draggable="false"
           />
         </div>
@@ -158,10 +158,10 @@ export default function Footer() {
           </div>
 
           {/* Column 3: مواقع ذات صلة (visually left in RTL layout) */}
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-center text-center md:items-end md:text-right">
             <h3
               style={{ maxWidth: "var(--width-footer-col3)" }}
-              className="mb-6 w-full font-sans text-xl font-medium text-brand-accent-gold"
+              className="mb-6 w-full font-sans text-xl font-medium text-brand-accent-gold text-center md:text-right"
             >
               مواقع ذات صلة
             </h3>
@@ -176,7 +176,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={site.label}
-                    className="flex w-full items-center justify-end gap-2 px-5 font-medium transition-colors duration-200 hover:text-brand-primary"
+                    className="flex w-full items-center justify-center gap-2 font-medium transition-colors duration-200 hover:text-brand-primary md:justify-end md:px-5"
                   >
                     <span
                       className="select-none font-bold text-white"

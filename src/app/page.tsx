@@ -86,7 +86,7 @@ const BOOK_SECTIONS = [
     id: "encyclopedias",
     title: "الموسوعات",
     books: ENCYCLOPEDIAS,
-    href: "/books/encyclopedias",
+    href: "/encyclopedias",
   },
 ] as const;
 

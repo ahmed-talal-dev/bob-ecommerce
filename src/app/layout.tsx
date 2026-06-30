@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Alexandria, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/features/cart/context/CartContext";
 import "./globals.css";
 
 const alexandria = Alexandria({
@@ -34,11 +35,13 @@ export default function RootLayout({
       className={`${alexandria.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white">
-        <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

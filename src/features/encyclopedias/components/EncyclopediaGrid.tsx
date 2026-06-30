@@ -4,12 +4,12 @@ import { AlertCircle } from "lucide-react";
 import EncyclopediaCard from "./EncyclopediaCard";
 import { useEncyclopedias } from "../hooks/use-encyclopedias";
 
-const SKELETON_COUNT = 6;
+const SKELETON_COUNT = 16;
 
 function CardSkeleton() {
   return (
     <div className="flex flex-col overflow-hidden rounded-xl ring-1 ring-foreground/10 animate-pulse">
-      <div className="aspect-[3/4] w-full bg-muted" />
+      <div className="aspect-3/4 w-full bg-muted" />
       <div className="flex flex-col gap-2 p-3">
         <div className="h-4 w-3/4 rounded bg-muted" />
         <div className="h-3 w-1/2 rounded bg-muted" />
@@ -27,7 +27,7 @@ export default function EncyclopediaGrid() {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {Array.from({ length: SKELETON_COUNT }).map((_, index) => (
           <CardSkeleton key={`skeleton-${index}`} />
         ))}
@@ -57,7 +57,7 @@ export default function EncyclopediaGrid() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {encyclopedias.map((book) => (
         <EncyclopediaCard key={book.id} book={book} />
       ))}

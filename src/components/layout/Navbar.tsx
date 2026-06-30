@@ -27,6 +27,7 @@ const NAV_LINKS: readonly NavLink[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const isWhoWeArePage = pathname === "/who-we-are";
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMenuToggle = () => setIsMobileMenuOpen((prev) => !prev);
@@ -129,14 +130,18 @@ export default function Navbar() {
         </div>
 
         {/* ── Desktop search bar — hidden below lg ─────────────────────── */}
-        <div className="hidden lg:block">
-          <SearchBar />
-        </div>
+        {!isWhoWeArePage && (
+          <div className="hidden lg:block">
+            <SearchBar />
+          </div>
+        )}
 
         {/* ── Mobile search bar — visible below lg, always visible ─────── */}
-        <div className="py-3 lg:hidden">
-          <SearchBar />
-        </div>
+        {!isWhoWeArePage && (
+          <div className="py-3 lg:hidden">
+            <SearchBar />
+          </div>
+        )}
       </div>
 
       {/* ── Mobile menu drawer ────────────────────────────────────────── */}

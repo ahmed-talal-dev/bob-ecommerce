@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ShoppingCart } from "lucide-react";
 import { formatCurrency } from "@/utils/format-currency";
+import { useCart } from "@/features/cart/context/CartContext";
 import type { EncyclopediaBook } from "../types";
 
 interface EncyclopediaCardProps {
@@ -8,6 +12,19 @@ interface EncyclopediaCardProps {
 }
 
 export default function EncyclopediaCard({ book }: EncyclopediaCardProps) {
+  const { addItem } = useCart();
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    addItem({
+      encyclopediaId: book.id,
+      title: book.title,
+      coverUrl: book.coverUrl,
+      unitPriceEgp: book.priceEgp,
+    });
+    router.push("/cart");
+  };
+
   return (
     <div
       className="group/card relative flex flex-col justify-between mx-auto w-full bg-white border border-brand-muted/50 rounded-xl overflow-hidden"
@@ -67,6 +84,7 @@ export default function EncyclopediaCard({ book }: EncyclopediaCardProps) {
           {/* Rectangle 49: Cart button */}
           <button
             type="button"
+            onClick={handleAddToCart}
             aria-label={`إضافة ${book.title} إلى السلة`}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded bg-brand-secondary transition-colors hover:bg-brand-secondary-dark"
           >

@@ -56,7 +56,6 @@
   /* ─── Awtad brand palette ────────────────────────────────────── */
   --color-gold: #f7c32a;
   --color-gold-hover: #f4a805;
-  --color-purple: #724194;
   --color-purple-dark: #29093f;
   --color-dark: #20201e;
   --color-muted-gray: #afafaf;
@@ -64,8 +63,6 @@
   --color-surface-dim: #d9d9d9;
   --color-accent-gold: #d8af6f;
   --color-accent-gold-dark: #caa15f;
-  /* Page heading color  */
-  --color-heading: #153b37;
 
   /* Brand prefixed tokens for strict config compliance */
   --color-brand-primary: #f7c32a;
@@ -102,6 +99,8 @@
 
   /* ─── Hero gradient overlay (Figma 33% black scrim) ─────────── */
   --hero-overlay: rgba(0, 0, 0, 0.33);
+  /* About page Values section overlay — 88% brand-secondary-dark scrim */
+  --about-values-overlay: rgba(41, 9, 63, 0.88);
 
   /* ─── Footer layout tokens (Figma specifications) ───────────── */
   --height-footer-cta: 72px;

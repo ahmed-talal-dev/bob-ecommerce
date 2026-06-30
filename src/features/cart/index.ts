@@ -1,3 +1,3 @@
 export { default as AddToCartButton } from "./components/AddToCartButton";
-export { useCart } from "./hooks/use-cart";
+export { useCart } from "./context/CartContext";
 export type { CartItem } from "./types";
